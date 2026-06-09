@@ -1,0 +1,290 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: #172033;
+  background: #f4f6fa;
+  font-family: Arial, "Microsoft YaHei", sans-serif;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr) 360px;
+  height: 100vh;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow-y: auto;
+  padding: 22px;
+  color: #f8fafc;
+  background: #162033;
+}
+
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.logo {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 8px;
+  background: #2f80ed;
+  font-weight: 700;
+}
+
+.brand h1,
+.brand p,
+.panel h2,
+.topbar h2,
+.topbar p {
+  margin: 0;
+}
+
+.brand h1 {
+  font-size: 18px;
+}
+
+.brand p,
+.status,
+.empty {
+  color: #9aa7bd;
+  font-size: 13px;
+}
+
+.panel {
+  padding: 15px;
+  border: 1px solid #344158;
+  border-radius: 8px;
+  background: #202b40;
+}
+
+.panel h2 {
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+input[type="file"] {
+  width: 100%;
+  color: #dbe4f0;
+}
+
+button {
+  border: 0;
+  border-radius: 6px;
+  padding: 10px 14px;
+  color: white;
+  background: #2f80ed;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+button:hover:not(:disabled) {
+  background: #1f6fd1;
+}
+
+#uploadBtn,
+.secondary-btn {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.secondary-btn {
+  background: #46556e;
+}
+
+.status {
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.history-item,
+.doc-card {
+  width: 100%;
+  border: 1px solid #4a5872;
+  border-radius: 6px;
+  padding: 9px 10px;
+  color: #f8fafc;
+  background: #344158;
+  text-align: left;
+  font-size: 13px;
+}
+
+.history-item {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.doc-card p {
+  margin: 5px 0;
+  color: #c9d3e2;
+  word-break: break-all;
+}
+
+.chat-area {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  min-height: 76px;
+  padding: 16px 24px;
+  border-bottom: 1px solid #dde3ee;
+  background: white;
+}
+
+.topbar h2 {
+  font-size: 18px;
+}
+
+.topbar p {
+  margin-top: 5px;
+  color: #667085;
+  font-size: 13px;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.bubble {
+  max-width: 780px;
+  border-radius: 8px;
+  padding: 14px 16px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.assistant .bubble {
+  border: 1px solid #dde3ee;
+  background: white;
+}
+
+.user .bubble {
+  color: white;
+  background: #2f80ed;
+}
+
+.composer {
+  display: flex;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid #dde3ee;
+  background: white;
+}
+
+.composer input {
+  min-width: 0;
+  flex: 1;
+  border: 1px solid #c7d0df;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 14px;
+}
+
+.reference-panel {
+  overflow-y: auto;
+  padding: 20px;
+  border-left: 1px solid #dde3ee;
+  background: white;
+}
+
+.reference-panel h2 {
+  margin: 0 0 14px;
+  font-size: 16px;
+}
+
+.section-title {
+  margin-top: 24px !important;
+}
+
+.ref-card,
+.monitor-card {
+  margin-bottom: 12px;
+  border: 1px solid #dde3ee;
+  border-radius: 8px;
+  padding: 12px;
+  background: #f8fafc;
+}
+
+.ref-card h3,
+.monitor-card h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.ref-card p,
+.monitor-card p {
+  margin: 5px 0;
+  color: #475467;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.score {
+  margin-top: 8px;
+  color: #667085;
+  font-size: 12px;
+}
+
+@media (max-width: 1080px) {
+  .app-shell {
+    grid-template-columns: 270px minmax(0, 1fr);
+  }
+
+  .reference-panel {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .app-shell {
+    display: block;
+    height: auto;
+  }
+
+  .sidebar,
+  .reference-panel {
+    display: block;
+  }
+
+  .chat-area {
+    min-height: 70vh;
+  }
+}
+

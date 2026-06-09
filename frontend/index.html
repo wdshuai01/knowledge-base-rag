@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>企业级知识库问答 RAG</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">RAG</div>
+        <div>
+          <h1>企业知识库问答</h1>
+          <p>LangChain + Elasticsearch</p>
+        </div>
+      </div>
+
+      <section class="panel">
+        <h2>服务状态</h2>
+        <button id="healthBtn" class="secondary-btn">检查连接</button>
+        <div id="healthStatus" class="status">尚未检查</div>
+      </section>
+
+      <section class="panel">
+        <h2>文档入库</h2>
+        <input id="fileInput" type="file" accept=".txt,.md,.pdf" />
+        <button id="uploadBtn">上传并解析</button>
+        <div id="uploadStatus" class="status"></div>
+      </section>
+
+      <section class="panel">
+        <h2>问答记录</h2>
+        <button id="refreshHistoryBtn" class="secondary-btn">刷新记录</button>
+        <div id="questionHistory" class="list">
+          <p class="empty">暂无记录</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>文档管理</h2>
+        <button id="refreshDocsBtn" class="secondary-btn">刷新文档</button>
+        <button id="dedupeDocsBtn" class="secondary-btn">文档去重</button>
+        <div id="documentsPanel" class="list">
+          <p class="empty">暂无文档</p>
+        </div>
+      </section>
+    </aside>
+
+    <main class="chat-area">
+      <header class="topbar">
+        <div>
+          <h2>知识库问答</h2>
+          <p>BM25 + dense_vector KNN 混合检索，父子 chunk 补全上下文</p>
+        </div>
+      </header>
+
+      <section id="messages" class="messages">
+        <div class="message assistant">
+          <div class="bubble">请先上传企业文档，然后输入问题。</div>
+        </div>
+      </section>
+
+      <footer class="composer">
+        <input id="questionInput" placeholder="输入问题，例如：这个制度的报销流程是什么？" />
+        <button id="askBtn">发送</button>
+      </footer>
+    </main>
+
+    <aside class="reference-panel">
+      <h2>引用来源</h2>
+      <div id="references" class="references">
+        <p class="empty">暂无引用</p>
+      </div>
+
+      <h2 class="section-title">检索监控</h2>
+      <button id="refreshMonitorBtn" class="secondary-btn">刷新日志</button>
+      <div id="monitorLogs">
+        <p class="empty">暂无日志</p>
+      </div>
+
+      <h2 class="section-title">召回评测</h2>
+      <button id="runEvalBtn" class="secondary-btn">运行评测</button>
+      <div id="evalPanel">
+        <p class="empty">暂无评测结果</p>
+      </div>
+    </aside>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
